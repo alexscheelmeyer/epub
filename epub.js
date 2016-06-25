@@ -86,16 +86,9 @@ EPub.prototype.parse = function () {
     this.flow = [];
     this.toc = [];
 
-    this.open();
-};
-
 /**
- *  EPub#open() -> undefined
- *
  *  Opens the epub file with Zip unpacker, retrieves file listing
- *  and runs mime type check
  **/
-EPub.prototype.open = function () {
     try {
         this.zip = new ZipFile(this.filename);
     } catch (E) {
@@ -108,16 +101,10 @@ EPub.prototype.open = function () {
         return;
     }
 
-    this.checkMimeType();
-};
-
 /**
- *  EPub#checkMimeType() -> undefined
- *
  *  Checks if there's a file called "mimetype" and that it's contents
  *  are "application/epub+zip". On success runs root file check.
  **/
-EPub.prototype.checkMimeType = function () {
     var i, len;
 
     for (i = 0, len = this.zip.names.length; i < len; i++) {
@@ -476,7 +463,7 @@ EPub.prototype.parseTOC = function () {
             xmlparser = new xml2js.Parser(xml2jsOptions);
 
         xmlparser.on("end", (function (result) {
-            if (result.navMap && result.navMap.navPoint) {
+            if (result && result.navMap && result.navMap.navPoint) {
                 this.toc = this.walkNavMap(result.navMap.navPoint, path, id_list);
             }
 
