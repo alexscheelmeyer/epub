@@ -124,8 +124,9 @@ EPub.prototype.parse = function () {
         }
         var txt = data.toString("utf-8").toLowerCase().trim();
 
-        if (txt  !=  "application/epub+zip") {
+        if (txt !== "application/epub+zip") {
             this.emit("error", new Error("Unsupported mime type"));
+            this.emit("end", true);
             return;
         }
 
@@ -285,7 +286,7 @@ EPub.prototype.parseRootFile = function (rootfile) {
     if (this.spine.toc) {
         this.parseTOC();
     } else {
-        this.emit("end");
+        this.emit("end", null);
     }
 };
 
@@ -467,7 +468,7 @@ EPub.prototype.parseTOC = function () {
                 this.toc = this.walkNavMap(result.navMap.navPoint, path, id_list);
             }
 
-            this.emit("end");
+            this.emit("end", null);
         }).bind(this));
 
         xmlparser.on("error", (function (err) {
