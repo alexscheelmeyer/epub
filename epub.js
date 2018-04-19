@@ -617,9 +617,9 @@ EPub.prototype.getChapter = function (id, callback) {
 
         // replace links
         str = str.replace(/(\shref\s*=\s*["']?)([^"'\s>]*?)(["'\s>])/g, (function (o, a, b, c) {
-            var linkparts = b && b.split("#"),
-                link = path.concat([(linkparts.shift() || "")]).join("/").trim(),
-                element;
+            const linkparts = b ? b.split("#") : [];
+            let link = path.concat([(linkparts.shift() || "")]).join("/").trim();
+            let element;
 
             for (i = 0, len = keys.length; i < len; i++) {
                 if (this.manifest[keys[i]].href.split("#")[0] == link) {
