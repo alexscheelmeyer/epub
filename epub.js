@@ -669,7 +669,7 @@ EPub.prototype.getChapterRaw = function (id, callback) {
                 return;
             }
 
-            var str = data.toString("utf-8");
+            var str = data ? data.toString("utf-8") : '';
 
             callback(null, str);
 
