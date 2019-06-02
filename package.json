@@ -30,11 +30,11 @@
     }
   ],
   "dependencies": {
-    "adm-zip": "0.4.4",
-    "xml2js": "^0.4.16"
+    "adm-zip": "^0.4.13",
+    "xml2js": "0.4.19"
   },
   "optionalDependencies": {
-    "zipfile": "0.5.0"
+    "zipfile": "0.5.12"
   },
   "engine": [
     "node >=0.3.0"
@@ -44,6 +44,6 @@
     "books"
   ],
   "devDependencies": {
-    "mocha": "2.1.0"
+    "mocha": "6.0.2"
   }
 }
