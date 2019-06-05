@@ -659,8 +659,8 @@ EPub.prototype.getChapter = function (id, callback) {
 EPub.prototype.getChapterRaw = function (id, callback) {
     if (this.manifest[id]) {
 
-        if (!(this.manifest[id]['media-type'] == "application/xhtml+xml" || this.manifest[id]['media-type'] == "image/svg+xml")) {
-            return callback(new Error("Invalid mime type for chapter"));
+        if (!(this.manifest[id]['media-type'] == "application/xhtml+xml" || this.manifest[id]['media-type'] == "image/svg+xml" || this.manifest[id]['media-type'] == "text/html")) {
+            return callback(new Error(`Invalid mime type for chapter: ${this.manifest[id]['media-type']}`));
         }
 
         this.zip.readFile(this.manifest[id].href, (function (err, data) {

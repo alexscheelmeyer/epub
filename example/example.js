@@ -1,7 +1,7 @@
 var EPub = require("../epub");
 
 // var epub = new EPub("/Users/alexmeyer/Downloads/open_directories/67-231-249-98.static.as40244.net:8090/get/EPUB/Adam Bede & George Eliot-Adam Bede_2271.epub", "/imagewebroot/", "/articlewebroot/");
-var epub = new EPub("/Users/alexmeyer/Downloads/open_directories/www.starbase-929.net/media/Calibre Library/Stephen King/Bag Of Bones (2230)/Bag Of Bones - Stephen King.epub", "/imagewebroot/", "/articlewebroot/");
+var epub = new EPub("/Users/alexmeyer/Downloads/open_directories/67-231-249-98.static.as40244.net:8090/get/EPUB/Colm Toibin-The Master_1981.epub", "/imagewebroot/", "/articlewebroot/");
 // var epub = new EPub("alice.epub", "/imagewebroot/", "/articlewebroot/");
 epub.on("error", function(err){
     console.log("ERROR\n-----");
