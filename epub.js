@@ -659,8 +659,9 @@ EPub.prototype.getChapter = function (id, callback) {
 EPub.prototype.getChapterRaw = function (id, callback) {
     if (this.manifest[id]) {
 
-        if (!(this.manifest[id]['media-type'] == "application/xhtml+xml" || this.manifest[id]['media-type'] == "image/svg+xml" || this.manifest[id]['media-type'] == "text/html")) {
-            return callback(new Error(`Invalid mime type for chapter: ${this.manifest[id]['media-type']}`));
+        var mediaType = this.manifest[id]['media-type'] || this.manifest[id]['mediatype'];
+        if (!(mediaType == "application/xhtml+xml" || mediaType == "image/svg+xml" || mediaType == "text/html")) {
+            return callback(new Error(`Invalid mime type for chapter: ${mediaType}`));
         }
 
         this.zip.readFile(this.manifest[id].href, (function (err, data) {
